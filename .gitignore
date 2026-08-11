@@ -1,0 +1,32 @@
+# Environment variables — NEVER commit these to version control
+.env
+.env.*
+!.env.example
+.env.local
+.env.production
+.env.*.local
+
+# Node.js dependencies
+node_modules/
+server/node_modules/
+client/node_modules/
+dist/
+build/
+
+# Build output
+client/dist/
+client/build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
