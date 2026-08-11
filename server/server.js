@@ -55,6 +55,26 @@ app.use(
 app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ extended: true, limit: "20mb" }));
 
+const enquiryLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: {
+    success: false,
+    message: "Too many enquiries submitted. Please try again later.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Rate Limiter for Login API to prevent brute-force attacks
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -68,6 +88,10 @@ const loginLimiter = rateLimit({
 });
 
 app.use("/api/auth/login", loginLimiter);
+app.use("/api/enquiries", (req, res, next) => {
+  if (req.method === "POST") return enquiryLimiter(req, res, next);
+  return next();
+});
 
 // Base route test
 app.get("/api/health", (req, res) => {
@@ -114,25 +138,14 @@ const startServer = async () => {
     console.log(
       `Server running on port ${PORT} in ${process.env.NODE_ENV || "development"} mode.`,
     );
-
-    const enquiryLimiter = rateLimit({
-      windowMs: 15 * 60 * 1000,
-      max: 20,
-      message: {
-        success: false,
-        message: "Too many enquiries submitted. Please try again later.",
-      },
-      standardHeaders: true,
-      legacyHeaders: false,
-    });
   });
 };
-app.use("/api/enquiries", (req, res, next) => {
-  if (req.method === "POST") return enquiryLimiter(req, res, next);
-  return next();
-});
 
-startServer().catch((error) => {
-  console.error(`[Startup] ${error.message}`);
-  process.exit(1);
-});
+if (require.main === module) {
+  startServer().catch((error) => {
+    console.error(`[Startup] ${error.message}`);
+    process.exit(1);
+  });
+}
+
+module.exports = app;

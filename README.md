@@ -65,4 +65,8 @@ Creation uses the equivalent `ALLOW_ADMIN_CREATE=true` and `CONFIRM_ADMIN_CREATE
 
 Build the frontend with `npm run build` from `client/`. Run the backend with `npm start` from `server/`. Configure the hosting platform with the required environment variables before startup; production startup does not create or reset administrators.
 
+### Vercel Backend Deployment
+
+The repository exposes the existing Express app through `api/index.js`. Vercel invokes that function directly; `app.listen()` is used only when `server/server.js` is executed by local `npm start`. Configure the required environment variables in the Vercel project, including `NODE_ENV=production` and the deployed frontend origin in `FRONTEND_URL`.
+
 For an authorized production image cleanup, also set `ALLOW_IMAGE_CLEANUP=true`, `CONFIRM_IMAGE_CLEANUP=YES`, and pass `--confirm` to `npm run cleanup-images`.
