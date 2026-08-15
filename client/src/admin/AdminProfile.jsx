@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 const AdminProfile = () => {
-  const { fetchProfile } = useSchool();
+  const { fetchProfile, updateProfile } = useSchool();
   const [profileData, setProfileData] = useState({
     schoolName: "",
     shortName: "",
@@ -119,7 +119,11 @@ const AdminProfile = () => {
           ...prev,
           feeVisibility: res.data.data.feeVisibility,
         }));
-        fetchProfile();
+        if (updateProfile) {
+          updateProfile({ feeVisibility: res.data.data.feeVisibility });
+        } else {
+          fetchProfile();
+        }
         setMsg(res.data.message);
       }
     } catch (err) {
@@ -137,7 +141,11 @@ const AdminProfile = () => {
       if (res.data && res.data.success) {
         setProfileData((prev) => ({ ...prev, ...res.data.data }));
         setMsg("School profile settings saved successfully!");
-        fetchProfile();
+        if (updateProfile) {
+          updateProfile(res.data.data);
+        } else {
+          fetchProfile();
+        }
       }
     } catch (err) {
       alert("Failed to update profile");

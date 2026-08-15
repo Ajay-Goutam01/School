@@ -87,11 +87,9 @@ const seedDemo = async () => {
       schoolName: "St. Xavier's International School",
       shortName: "St. Xavier's",
 
-      logo:
-        "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=300&auto=format&fit=crop&q=80",
+      logo: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=300&auto=format&fit=crop&q=80",
 
-      tagline:
-        "Where Learning Meets Character, Leadership & Innovation",
+      tagline: "Where Learning Meets Character, Leadership & Innovation",
 
       establishedYear: "1998",
       board: "CBSE & International Baccalaureate (IB) Candidate",
@@ -144,8 +142,7 @@ const seedDemo = async () => {
       heroSettings: {
         title: "Empowering Minds, Shaping Bright Futures",
 
-        subtitle:
-          "Where Learning Meets Character & Leadership",
+        subtitle: "Where Learning Meets Character & Leadership",
 
         description:
           "A premier educational institution dedicated to academic excellence, holistic growth, and strong moral values.",
@@ -326,8 +323,7 @@ const seedDemo = async () => {
           "Second Language",
           "Computer & Robotics Lab",
         ],
-        methodology:
-          "Interactive Smart Board Lessons & Practical Experiments",
+        methodology: "Interactive Smart Board Lessons & Practical Experiments",
         ageGroup: "6 to 10 Years",
         isVisible: true,
         order: 1,
@@ -379,8 +375,7 @@ const seedDemo = async () => {
           "Maths/Economics/Psychology",
           "Computer Science/IP/Physical Ed.",
         ],
-        methodology:
-          "Stream-Focused Mentorship & Competitive Exam Prep",
+        methodology: "Stream-Focused Mentorship & Competitive Exam Prep",
         ageGroup: "16 to 17 Years",
         isVisible: true,
         order: 4,
@@ -468,8 +463,7 @@ const seedDemo = async () => {
       {
         title: "Classical & Western Performing Arts Academy",
         category: "Cultural",
-        description:
-          "Dance, orchestra, rock band and theatrical productions.",
+        description: "Dance, orchestra, rock band and theatrical productions.",
         image:
           "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80",
         isFeatured: true,
@@ -518,8 +512,7 @@ const seedDemo = async () => {
         name: "Dr. Evelyn Montgomery",
         role: "Principal & Director of Education",
         subject: "Educational Leadership & Physics",
-        qualification:
-          "Ph.D. in Education, M.Sc. Physics",
+        qualification: "Ph.D. in Education, M.Sc. Physics",
         experience: "24+ Years Experience",
         photo:
           "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80",
@@ -683,33 +676,28 @@ const seedDemo = async () => {
     await Admission.create({
       academicYear: "2026–2027",
       isAdmissionsOpen: true,
-      statusMessage:
-        "Admissions Open for Nursery through Class 11",
+      statusMessage: "Admissions Open for Nursery through Class 11",
 
       processSteps: [
         {
           stepNumber: 1,
           title: "Enquiry & Prospectus",
-          description:
-            "Submit online form or visit campus admissions desk.",
+          description: "Submit online form or visit campus admissions desk.",
         },
         {
           stepNumber: 2,
           title: "Campus Tour",
-          description:
-            "Interactive session with academic counsellors.",
+          description: "Interactive session with academic counsellors.",
         },
         {
           stepNumber: 3,
           title: "Document Verification",
-          description:
-            "Verify birth certificate and report card.",
+          description: "Verify birth certificate and report card.",
         },
         {
           stepNumber: 4,
           title: "Seat Allotment & Fee Submission",
-          description:
-            "Secure seat upon fee submission.",
+          description: "Secure seat upon fee submission.",
         },
       ],
     });

@@ -4,7 +4,7 @@ import { useSchool } from '../context/SchoolContext';
 import { LayoutDashboard, Eye, EyeOff, Save, CheckCircle2, Sliders } from 'lucide-react';
 
 const AdminWebsiteSettings = () => {
-  const { fetchProfile } = useSchool();
+  const { fetchProfile, updateProfile } = useSchool();
   const [homepageSections, setHomepageSections] = useState({
     hero: true,
     highlights: true,
@@ -74,7 +74,11 @@ const AdminWebsiteSettings = () => {
       const res = await api.put('/school', { homepageSections, pageVisibility });
       if (res.data && res.data.success) {
         setMsg('Website visibility settings saved successfully!');
-        fetchProfile();
+        if (updateProfile) {
+          updateProfile(res.data.data || { homepageSections, pageVisibility });
+        } else {
+          fetchProfile();
+        }
       }
     } catch (err) {
       alert('Failed to save settings');

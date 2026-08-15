@@ -5,7 +5,7 @@ import ImageUploader from '../components/ImageUploader';
 import { Save, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 
 const AdminHero = () => {
-  const { fetchProfile } = useSchool();
+  const { fetchProfile, updateProfile } = useSchool();
   const [heroSettings, setHeroSettings] = useState({
     title: "Empowering Minds, Shaping Bright Futures",
     subtitle: "Where Learning Meets Character & Leadership",
@@ -48,7 +48,11 @@ const AdminHero = () => {
       const res = await api.put('/school', { heroSettings });
       if (res.data && res.data.success) {
         setMsg('Hero banner settings updated successfully!');
-        fetchProfile();
+        if (updateProfile) {
+          updateProfile(res.data.data || { heroSettings });
+        } else {
+          fetchProfile();
+        }
       }
     } catch (err) {
       alert('Failed to save hero settings');

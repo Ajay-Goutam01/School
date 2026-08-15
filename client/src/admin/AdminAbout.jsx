@@ -5,7 +5,7 @@ import ImageUploader from '../components/ImageUploader';
 import { Save, Plus, Trash2, ArrowUp, ArrowDown, CheckCircle2 } from 'lucide-react';
 
 const AdminAbout = () => {
-  const { fetchProfile } = useSchool();
+  const { fetchProfile, updateProfile } = useSchool();
   const [aboutSettings, setAboutSettings] = useState({
     heading: "Nurturing Tomorrow's Visionaries",
     subheading: "Established in 1998",
@@ -48,7 +48,11 @@ const AdminAbout = () => {
       const res = await api.put('/school', { aboutSettings });
       if (res.data && res.data.success) {
         setMsg('About section and Why Choose Us settings saved successfully!');
-        fetchProfile();
+        if (updateProfile) {
+          updateProfile(res.data.data || { aboutSettings });
+        } else {
+          fetchProfile();
+        }
       }
     } catch (err) {
       alert('Failed to save settings');

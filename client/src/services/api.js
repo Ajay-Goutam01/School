@@ -42,10 +42,10 @@ api.interceptors.response.use(
 
 // Fallback institutional mock data if API server is not running
 export const FALLBACK_PROFILE = {
-  schoolName: "St. Xavier's International School",
-  shortName: "St. Xavier's",
+  schoolName: "Talent Public School",
+  shortName: "TPS",
   logo: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=200&auto=format&fit=crop&q=80",
-  tagline: "Where Learning Meets Character & Global Leadership",
+  tagline: "Where Learning Meets Character & Global Leadership ",
   heroTitle: "Empowering Young Minds, Shaping Global Leaders",
   heroSubtitle:
     "A premier educational institution dedicated to academic rigor, character development, state-of-the-art STEM facilities, and holistic growth.",
@@ -54,16 +54,17 @@ export const FALLBACK_PROFILE = {
   establishedYear: "1998",
   board: "CBSE & IB Candidate School",
   medium: "English",
-  address: "124 Academy Boulevard, Knowledge Park III",
-  city: "New Delhi",
-  state: "Delhi",
-  pincode: "110001",
-  phone: "+91 98765 43210",
+  address: "Near Hanuman Temple, Azad Nagar",
+  city: "Alirajpur",
+  state: "Madhya Pradesh",
+  pincode: "457887",
+  phone: "+91 9876543210",
   alternatePhone: "+91 11 2345 6789",
-  email: "admissions@xaviersint.edu.in",
+  email: "[EMAIL_ADDRESS]",
   whatsapp: "919876543210",
   officeHours: "Monday – Saturday: 8:00 AM – 4:00 PM",
-  googleMapsUrl: "https://maps.google.com/?q=New+Delhi",
+  googleMapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Talent+Public+School,+Alirajpur",
 };
 
 export default api;
